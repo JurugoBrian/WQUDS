@@ -1,7 +1,7 @@
 
 # coding: utf-8
 
-# In[1]:
+# In[58]:
 
 
 get_ipython().run_line_magic('logstop', '')
@@ -509,7 +509,26 @@ def below_x_fibonacci(x):
         curr_num = next_num
 
 
-# In[ ]:
+# In[4]:
+
+
+def first_n_fibonacci(n):
+    prev_num = 0
+    curr_num = 1
+    count = 2
+
+    print(prev_num)
+    print(curr_num)
+
+    while count <= n:
+        next_num = curr_num + prev_num
+        print(next_num)
+        prev_num = curr_num
+        curr_num = next_num
+        count += 1
+
+
+# In[5]:
 
 
 m = 7
@@ -517,12 +536,31 @@ print('First %d Fibonacci numbers' % m)
 first_n_fibonacci(m)
 
 
-# In[ ]:
+# In[9]:
+
+
+def below_x_fibonacci(x):
+    prev_num = 8
+    curr_num = 13
+
+    if curr_num < x:
+        print(prev_num)
+        print(curr_num)
+    elif prev_num < x:
+        print(prev_num)
+    
+    while curr_num + prev_num < x:
+        next_num = curr_num + prev_num
+        print(next_num)
+        prev_num = curr_num
+        curr_num = next_num
+
+
+# In[12]:
 
 
 print()
-
-y = 40
+y = 100
 print('Fibonacci numbers below %d' % y)
 below_x_fibonacci(y)        
 
@@ -540,7 +578,7 @@ below_x_fibonacci(y)
 # 
 # The recipe has an ordered `list` of instructions. In Python we can use a list of strings to represent the instructions.
 
-# In[ ]:
+# In[13]:
 
 
 bread_recipe = ['Dissolve salt in water', 'Mix yeast into water', 'Mix water with flour to form dough', 
@@ -549,7 +587,7 @@ bread_recipe = ['Dissolve salt in water', 'Mix yeast into water', 'Mix water wit
 
 # We will discuss lists more in the [Data Structures lecture](PY_DataStructures.ipynb). We could store different recipes in different lists.
 
-# In[ ]:
+# In[14]:
 
 
 soup_recipe = ['Dissolve salt in water', 'Boil  water', 'Add bones to boiling water', 'Chop onions', 
@@ -564,7 +602,7 @@ beans_recipe = ['Soak beans in water', 'Dissolve salt in water', 'Heat water and
 # 
 # A `for` loop does an action for each item in a `list` (or more precisely, in an **iterable**).
 
-# In[ ]:
+# In[15]:
 
 
 def print_recipe(instructions):
@@ -572,19 +610,19 @@ def print_recipe(instructions):
         print(step)
 
 
-# In[ ]:
+# In[16]:
 
 
 print_recipe(soup_recipe)
 
 
-# In[ ]:
+# In[17]:
 
 
 print_recipe(bread_recipe)
 
 
-# In[ ]:
+# In[18]:
 
 
 print_recipe(beans_recipe)
@@ -592,7 +630,7 @@ print_recipe(beans_recipe)
 
 # We can also use a `for` loop to repeat a task a certain number of times, like printing out the first `n` numbers in the Fibonacci sequence. Compare these two Fibonacci functions:
 
-# In[ ]:
+# In[45]:
 
 
 def first_n_fibonacci_while(n):
@@ -624,13 +662,13 @@ def first_n_fibonacci_for(n):
         curr_num = next_num
 
 
-# In[ ]:
+# In[46]:
 
 
 first_n_fibonacci_while(7)
 
 
-# In[ ]:
+# In[47]:
 
 
 first_n_fibonacci_for(7)
@@ -644,7 +682,7 @@ first_n_fibonacci_for(7)
 # 
 # Another way to get something like iteration is called _recursion_ which is when we define a function in terms of itself.  Lets write the Fibonacci sequence recursively.  This will be slightly different in that it will only calculate the nth Fibonacci number.
 
-# In[ ]:
+# In[41]:
 
 
 def fibonacci_recursive(n):
@@ -656,7 +694,7 @@ def fibonacci_recursive(n):
         return fibonacci_recursive(n-1)  + fibonacci_recursive(n-2)
 
 
-# In[ ]:
+# In[42]:
 
 
 fibonacci_recursive(7)
@@ -670,7 +708,7 @@ fibonacci_recursive(7)
 # 
 # Below we write a function that prints out all the prime numbers up to some number `n`. We will use iteration to check if each number is prime. We will use a conditional to print out numbers only if they are prime. We will also break up the task into small pieces so our code is easy to read and understand. This means we will use (or _call_) helper functions inside of our solution.
 
-# In[ ]:
+# In[43]:
 
 
 def is_prime(number):
@@ -689,7 +727,7 @@ def print_primes(n):
             print('%d is prime' % number)
 
 
-# In[ ]:
+# In[44]:
 
 
 print_primes(42)
@@ -697,7 +735,7 @@ print_primes(42)
 
 # The other application of functions might be to do something many times (not necessarily in an iteration).  One specific and natural way to understand this is to have a list elements and apply a function to each element of the `list`.  Lets take a list of the first 20 numbers and find which ones are prime.  We will do this and save the result in a `list`. Lists have an `append` method which allows us to add to the end of the list (we will see more about lists in the next lecture).
 
-# In[ ]:
+# In[48]:
 
 
 list_of_numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
@@ -710,7 +748,7 @@ prime_list
 
 # Python provides a nice construct to apply a function to every element of a list, called a `list comprehension`, here is an example of one:
 
-# In[ ]:
+# In[49]:
 
 
 [number for number in list_of_numbers if is_prime(number)]
@@ -722,7 +760,7 @@ prime_list
 # 
 # Notice that the `example_a` and `example_b` had no input, but other functions like `test_high_score` had multiple variables as input.  Remember that a function argument is just a placeholder for a name and will be bound to whatever is passed into the function.  For example:
 
-# In[ ]:
+# In[50]:
 
 
 def print_this(a):
@@ -735,7 +773,7 @@ print('a = ', a)
 
 # Notice that even though `print_this` was printing the variable `a` inside the function and there was a variable `a` defined outside of the function, the `print` function inside `print_this` still printed what was passed in.  However, I can also 
 
-# In[ ]:
+# In[51]:
 
 
 def print_it():
@@ -750,7 +788,7 @@ print('a = ', a)
 # 
 # That said, there is a very powerful technique called `function closure` which we can make use of this ability.  Lets say we want a function which will raise a number to some exponent, but we don't know which exponent ahead of runtime.  We can define such a function like this.
 
-# In[ ]:
+# In[52]:
 
 
 def some_exponent(exponent):
@@ -759,7 +797,7 @@ def some_exponent(exponent):
     return func
 
 
-# In[ ]:
+# In[53]:
 
 
 some_exponent(2)(2), some_exponent(3)(2)
@@ -767,7 +805,7 @@ some_exponent(2)(2), some_exponent(3)(2)
 
 # Now that we understand how normal arguments work, lets look at a few conveniences Python provides for making functions easier to create.  The first is default arguments.  Let's suppose we have a function which had a bunch of arguments, but most of them had sane defaults, for example:
 
-# In[ ]:
+# In[54]:
 
 
 def print_todo(watch_tv, read, eat, sleep):
@@ -785,7 +823,7 @@ print_todo(True, True, True, True)
 
 # I know that I almost always need to eat and sleep, so I can use a default argument for these instead.  This means I don't need to define the value of `eat` and `sleep` unless they are different than the default.
 
-# In[ ]:
+# In[55]:
 
 
 def print_todo_default(watch_tv, read, eat=True, sleep=True):
@@ -805,7 +843,7 @@ print_todo_default(True, True)
 # 
 # Another thing we might want to do is take a variable list of arguments, lets write a similar `todo` function as before, but this time we will allow it to pass in any number of arguments.  Here we will make use of the `*args` syntax.  This `*` tells python to gather the rest of the arguments into the tuple `args`.
 
-# In[ ]:
+# In[60]:
 
 
 def print_todo_args(*args):
