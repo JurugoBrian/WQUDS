@@ -1,7 +1,7 @@
 
 # coding: utf-8
 
-# In[141]:
+# In[214]:
 
 
 get_ipython().run_line_magic('logstop', '')
@@ -111,24 +111,24 @@ grader.score.ip__mersenne_numbers(mersennes)
 # 
 # Write a function that accepts the exponent $p$ of a Mersenne number and returns the Lucas-Lehmer sequence up to $i = p - 2$ (inclusive). Remember that the [modulo operation](https://en.wikipedia.org/wiki/Modulo_operation) is implemented in Python as `%`.
 
-# In[197]:
+# In[235]:
 
 
 def lucas_lehmer(p):
     n0 = 4
-    lucas_list = []
-    for i in range (p-1):
-        n1 = (n0**2-2)%(2**p-1)
+    m = 2**p-1
+    lucas_list = [n0]
+    for i in range (p-2):
+        n1 = (n0**2-2)%m
         lucas_list.append(n1)
         n0 = n1
     return lucas_list
-
 lucas_lehmer(17)
 
 
 # Use your function to calculate the Lucas-Lehmer series for $p = 17$ and pass the result to the grader.
 
-# In[196]:
+# In[236]:
 
 
 ll_result = lucas_lehmer(17)
