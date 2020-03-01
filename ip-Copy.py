@@ -1,7 +1,7 @@
 
 # coding: utf-8
 
-# In[214]:
+# In[205]:
 
 
 get_ipython().run_line_magic('logstop', '')
@@ -29,7 +29,7 @@ from static_grader import grader
 # 
 # Write a function that accepts an exponent $p$ and returns the corresponding Mersenne number.
 
-# In[75]:
+# In[110]:
 
 
 def mersenne_number(p):
@@ -41,7 +41,7 @@ mersenne_number(2)
 # 
 # Hint: It may be useful to modify the `is_prime` and `get_primes` functions from [the Program Flow notebook](PY_ProgramFlow.ipynb) for use in this problem.
 
-# In[76]:
+# In[111]:
 
 
 # we can make a list like this
@@ -49,7 +49,7 @@ my_list = []
 print(my_list)
 
 
-# In[110]:
+# In[112]:
 
 
 # we can also make an empty list and add items to it
@@ -57,9 +57,10 @@ another_list = []
 print(another_list)
 
 
-# In[135]:
+# In[113]:
 
 
+my_list.clear()
 def is_prime(number):
     if number <= 2:
         return False
@@ -73,11 +74,10 @@ def get_primes(n_start, n_end):
         if is_prime(number):
             my_list.append(number)
     return my_list
-
 get_primes(3, 65)
 
 
-# In[137]:
+# In[114]:
 
 
 def mersenne_numbers(num_list):
@@ -85,7 +85,6 @@ def mersenne_numbers(num_list):
         msn = 2**item-1
         another_list.append(msn)
     return another_list
-another_list.clear()
 
 
 # The next cell shows a dummy solution, a list of 17 sevens. Alter the next cell to make use of the functions you've defined above to create the appropriate list of Mersenne numbers.
@@ -111,7 +110,7 @@ grader.score.ip__mersenne_numbers(mersennes)
 # 
 # Write a function that accepts the exponent $p$ of a Mersenne number and returns the Lucas-Lehmer sequence up to $i = p - 2$ (inclusive). Remember that the [modulo operation](https://en.wikipedia.org/wiki/Modulo_operation) is implemented in Python as `%`.
 
-# In[235]:
+# In[168]:
 
 
 def lucas_lehmer(p):
@@ -128,7 +127,7 @@ lucas_lehmer(17)
 
 # Use your function to calculate the Lucas-Lehmer series for $p = 17$ and pass the result to the grader.
 
-# In[236]:
+# In[240]:
 
 
 ll_result = lucas_lehmer(17)
@@ -142,17 +141,31 @@ grader.score.ip__lucas_lehmer(ll_result)
 # 
 # _HINT: The `zip` function is useful for combining two lists into a list of tuples_
 
-# In[ ]:
+# In[221]:
 
 
 def ll_prime(p):
-    
+    lucas_list = lucas_lehmer(p)
+    for num in lucas_list:
+        if num == 0:
+            tested_num = 1
+        else:
+            tested_num = 0
+    return tested_num
+def send_num():
+    prime_num = get_primes(3, 65)
+    tested_list1 = []
+    for i in prime_num:
+        tested_num = ll_prime(i)
+        tested_list2 = tested_list1.append(tested_num)
+    return list(zip(prime_num, tested_list2))
+send_num()       
 
 
-# In[ ]:
+# In[186]:
 
 
-mersenne_primes = [(3, 1)] * 17
+mersenne_primes = ll_prime(input_list)
 
 grader.score.ip__mersenne_primes(mersenne_primes)
 
