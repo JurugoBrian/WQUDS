@@ -1,7 +1,7 @@
 
 # coding: utf-8
 
-# In[205]:
+# In[2]:
 
 
 get_ipython().run_line_magic('logstop', '')
@@ -13,7 +13,7 @@ sns.set()
 matplotlib.rcParams['figure.dpi'] = 144
 
 
-# In[ ]:
+# In[3]:
 
 
 from static_grader import grader
@@ -29,7 +29,7 @@ from static_grader import grader
 # 
 # Write a function that accepts an exponent $p$ and returns the corresponding Mersenne number.
 
-# In[110]:
+# In[4]:
 
 
 def mersenne_number(p):
@@ -41,7 +41,7 @@ mersenne_number(2)
 # 
 # Hint: It may be useful to modify the `is_prime` and `get_primes` functions from [the Program Flow notebook](PY_ProgramFlow.ipynb) for use in this problem.
 
-# In[111]:
+# In[5]:
 
 
 # we can make a list like this
@@ -49,7 +49,7 @@ my_list = []
 print(my_list)
 
 
-# In[112]:
+# In[6]:
 
 
 # we can also make an empty list and add items to it
@@ -57,7 +57,7 @@ another_list = []
 print(another_list)
 
 
-# In[113]:
+# In[7]:
 
 
 my_list.clear()
@@ -74,10 +74,11 @@ def get_primes(n_start, n_end):
         if is_prime(number):
             my_list.append(number)
     return my_list
-get_primes(3, 65)
+my_list = get_primes(3, 65)
+print(my_list)
 
 
-# In[114]:
+# In[8]:
 
 
 def mersenne_numbers(num_list):
@@ -110,7 +111,7 @@ grader.score.ip__mersenne_numbers(mersennes)
 # 
 # Write a function that accepts the exponent $p$ of a Mersenne number and returns the Lucas-Lehmer sequence up to $i = p - 2$ (inclusive). Remember that the [modulo operation](https://en.wikipedia.org/wiki/Modulo_operation) is implemented in Python as `%`.
 
-# In[168]:
+# In[17]:
 
 
 def lucas_lehmer(p):
@@ -141,7 +142,7 @@ grader.score.ip__lucas_lehmer(ll_result)
 # 
 # _HINT: The `zip` function is useful for combining two lists into a list of tuples_
 
-# In[221]:
+# In[21]:
 
 
 def ll_prime(p):
@@ -152,20 +153,21 @@ def ll_prime(p):
         else:
             tested_num = 0
     return tested_num
-def send_num():
-    prime_num = get_primes(3, 65)
-    tested_list1 = []
-    for i in prime_num:
-        tested_num = ll_prime(i)
-        tested_list2 = tested_list1.append(tested_num)
-    return list(zip(prime_num, tested_list2))
-send_num()       
+
+def send_num(the_list):
+    tested_list = []
+    for num in the_list:
+        tested_num = ll_prime(num)
+        tested_list.append(tested_num)
+    return list(zip(the_list, tested_list))
+        
+send_num(my_list)
 
 
-# In[186]:
+# In[22]:
 
 
-mersenne_primes = ll_prime(input_list)
+mersenne_primes = send_num(my_list)
 
 grader.score.ip__mersenne_primes(mersenne_primes)
 
