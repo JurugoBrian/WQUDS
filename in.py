@@ -34,13 +34,13 @@ from static_grader import grader
 # In this case, the answer is a fixed value, so you may compute (or hard-code) the answer and submit it.
 # Note that we have provided a "dummy solution" below. This dummy solution illustrates the correct format of the solution (i.e. a list of 5 numbers). If you are encountering an error when you try to submit a solution to the grader, double check that your answer has the same structure as the dummy solution.
 
-# In[2]:
+# In[ ]:
 
 
-even_numbers = [2, 4, 6, 8, 10]
+even_numbers = [0] * 5
 
 
-# In[3]:
+# In[ ]:
 
 
 grader.score.in__problem1(even_numbers)
@@ -59,20 +59,14 @@ grader.score.in__problem1(even_numbers)
 # mult(test_numbers)
 # ```
 
-# In[57]:
+# In[ ]:
 
 
-numbers = [1, 2, 3]
-mult_numbers = [] 
-    
-def mult(test_numbers):
-    for num in test_numbers:
-        mult_num = num*10
-        mult_numbers.append(mult_num)
-    return mult_numbers
+def mult(numbers):
+    return [0] * len(numbers)
 
 
-# In[58]:
+# In[ ]:
 
 
 grader.score.in__problem2(mult)
