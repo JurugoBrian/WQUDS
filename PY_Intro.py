@@ -1,7 +1,7 @@
 
 # coding: utf-8
 
-# In[2]:
+# In[1]:
 
 
 get_ipython().run_line_magic('logstop', '')
@@ -56,7 +56,7 @@ a = 5
 
 # The value is still accessible in another cell:
 
-# In[4]:
+# In[5]:
 
 
 print(a)
