@@ -1,7 +1,7 @@
 
 # coding: utf-8
 
-# In[89]:
+# In[31]:
 
 
 get_ipython().run_line_magic('logstop', '')
@@ -14,7 +14,7 @@ sns.set()
 matplotlib.rcParams['figure.dpi'] = 144
 
 
-# In[90]:
+# In[4]:
 
 
 from static_grader import grader
@@ -30,7 +30,7 @@ from static_grader import grader
 # 
 # Write a function that accepts an exponent $p$ and returns the corresponding Mersenne number.
 
-# In[91]:
+# In[5]:
 
 
 def mersenne_number(p):
@@ -42,7 +42,7 @@ mersenne_number(2)
 # 
 # Hint: It may be useful to modify the `is_prime` and `get_primes` functions from [the Program Flow notebook](PY_ProgramFlow.ipynb) for use in this problem.
 
-# In[92]:
+# In[6]:
 
 
 # we can make a list like this
@@ -50,7 +50,7 @@ my_list = []
 print(my_list)
 
 
-# In[6]:
+# In[7]:
 
 
 # we can also make an empty list and add items to it
@@ -58,7 +58,7 @@ another_list = []
 print(another_list)
 
 
-# In[93]:
+# In[8]:
 
 
 my_list.clear()
@@ -79,7 +79,7 @@ my_list = get_primes(3, 65)
 print(my_list)
 
 
-# In[94]:
+# In[9]:
 
 
 def mersenne_numbers(num_list):
@@ -112,7 +112,7 @@ grader.score.ip__mersenne_numbers(mersennes)
 # 
 # Write a function that accepts the exponent $p$ of a Mersenne number and returns the Lucas-Lehmer sequence up to $i = p - 2$ (inclusive). Remember that the [modulo operation](https://en.wikipedia.org/wiki/Modulo_operation) is implemented in Python as `%`.
 
-# In[96]:
+# In[10]:
 
 
 def lucas_lehmer(p):
@@ -143,7 +143,7 @@ grader.score.ip__lucas_lehmer(ll_result)
 # 
 # _HINT: The `zip` function is useful for combining two lists into a list of tuples_
 
-# In[97]:
+# In[11]:
 
 
 def ll_prime(p):
@@ -185,22 +185,26 @@ grader.score.ip__mersenne_primes(mersenne_primes)
 # 
 # You will see the functions followed by a cell with an `assert` statement.  These cells should run and produce no output, if they produce an error, then your function needs to be modified.  Do not modify the assert statements, they are exactly as they should be!
 
-# In[102]:
+# In[32]:
 
 
 import math
+import numpy as np
 def is_prime_fast(num):
     if(num<=2 or ((num%2==0)and(num>2))):
         return False
-    for i in range(3, num):
-        if(num%i)==0:
+    frnum = float(num**0.5)
+    fnum = float(num)
+    for i in np.arange(3.0, frnum):
+        if(fnum%i)==0.0:
             return False
     return True
+is_prime_fast(9)
 
 
 # Run the following cell to make sure it finds the same primes as the original function.
 
-# In[101]:
+# In[ ]:
 
 
 for n in range(10000):
