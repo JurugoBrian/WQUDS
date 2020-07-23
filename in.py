@@ -5,7 +5,7 @@
 
 
 get_ipython().run_line_magic('logstop', '')
-get_ipython().run_line_magic('logstart', '-ortq ~/.logs/in.py append')
+get_ipython().run_line_magic('logstart', '-rtq ~/.logs/in.py append')
 get_ipython().run_line_magic('matplotlib', 'inline')
 import matplotlib
 import seaborn as sns
@@ -34,13 +34,19 @@ from static_grader import grader
 # In this case, the answer is a fixed value, so you may compute (or hard-code) the answer and submit it.
 # Note that we have provided a "dummy solution" below. This dummy solution illustrates the correct format of the solution (i.e. a list of 5 numbers). If you are encountering an error when you try to submit a solution to the grader, double check that your answer has the same structure as the dummy solution.
 
-# In[ ]:
+# In[2]:
 
 
-even_numbers = [0] * 5
+even_numbers = [2,4,6,8,10]
 
 
-# In[ ]:
+# In[3]:
+
+
+print(even_numbers)
+
+
+# In[4]:
 
 
 grader.score.in__problem1(even_numbers)
@@ -59,17 +65,23 @@ grader.score.in__problem1(even_numbers)
 # mult(test_numbers)
 # ```
 
-# In[ ]:
+# In[54]:
 
+
+numbers = [1,2,3,4,5,6,7,8,9]
 
 def mult(numbers):
-    return [0] * len(numbers)
+    multiplied_ten = []
+    for n in numbers:
+        num = n*10
+        multiplied_ten.append(num)
+    return multiplied_ten
 
 
-# In[ ]:
+# In[56]:
 
 
 grader.score.in__problem2(mult)
 
 
-# *Copyright &copy; 2019 The Data Incubator.  All rights reserved.*
+# *Copyright &copy; 2020 The Data Incubator.  All rights reserved.*
