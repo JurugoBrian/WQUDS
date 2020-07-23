@@ -1,2 +1,2 @@
 # WQUDS
-World Quant University Data Science Module
+WorldQuant University (WQU) Scientific Computing and Python for Data Science Unit
