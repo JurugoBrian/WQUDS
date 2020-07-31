@@ -1,11 +1,11 @@
 
 # coding: utf-8
 
-# In[58]:
+# In[1]:
 
 
 get_ipython().run_line_magic('logstop', '')
-get_ipython().run_line_magic('logstart', '-ortq ~/.logs/PY_ProgramFlow.py append')
+get_ipython().run_line_magic('logstart', '-rtq ~/.logs/PY_ProgramFlow.py append')
 get_ipython().run_line_magic('matplotlib', 'inline')
 import matplotlib
 import seaborn as sns
@@ -120,30 +120,19 @@ print(type(has_dog))
 # 1. Define `my_name` and `my_age` variables with values corresponding to your own name and age and print them.
 # 1. Use your `my_age` variable to print out how old you will be in 10 years.
 
-# In[22]:
+# In[19]:
 
 
-my_name = "Jurugo Brian"
-my_age = 24
-print('My name is', my_name, 'am', my_age, 'years old')
+other_name = "Jurugo Brian"
+other_age = 30
+print("My other name is {} am {} year's old".format(other_name, other_age))
 
 
-# In[23]:
+# ## Functions
+# 
+# Many programs react to user input. Functions allow us to define a task we would like the computer to carry out based on input. A simple function in Python might look like this:
 
-
-new_age = my_age + 10
-print('I will be', new_age, 'in 10 years time')
-
-
-# In[ ]:
-
-
-## Functions
-
-Many programs react to user input. Functions allow us to define a task we would like the computer to carry out based on input. A simple function in Python might look like this:
-
-
-# In[ ]:
+# In[20]:
 
 
 def square(number):
@@ -156,13 +145,10 @@ def square(number):
 # 
 # Let's see our function in action:
 
-# In[27]:
+# In[ ]:
 
 
 # we can store function output in variables
-def square(number):
-    return number**2
-
 squared = square(5.5)
 
 print(squared)
@@ -176,7 +162,7 @@ print(square(my_number))
 # 
 # Not all possible inputs are valid.
 
-# In[29]:
+# In[ ]:
 
 
 get_ipython().run_cell_magic('expect_exception', 'TypeError', "\nprint(square('banana'))")
@@ -189,28 +175,10 @@ get_ipython().run_cell_magic('expect_exception', 'TypeError', "\nprint(square('b
 # 1. Write a function to cube a number.
 # 2. Write a function, `say_hello` which takes in a name variable and print out "Hello name".  `say_hello("zach")` should print `"Hello zach"`.
 
-# In[30]:
-
-
-def cubeNumber(number):
-    return number**3
-
-print(cubeNumber(2))
-
-
-# In[35]:
-
-
-def say_hello(name):
-    print('Hello', name)
-
-say_hello('Jurugo')
-
-
 # ### Why Functions?
 # We can see that functions are useful for handling user input, but they also come in handy in numerous other cases.  One example is when we want to perform an action multiple times on different input.  If I want to square a bunch of numbers, in particular the numbers between 1 and 10, I can do this pretty easily (later we will learn about iteration which will make this even easier!)
 
-# In[36]:
+# In[ ]:
 
 
 1**2
@@ -226,7 +194,7 @@ say_hello('Jurugo')
 
 # It seems I forgot to save the answers or at least print them.  This is easy:
 
-# In[37]:
+# In[ ]:
 
 
 print(1**2)
@@ -242,17 +210,16 @@ print(9**2)
 
 # That worked!  However, what if I now want to go back and add two to all the answers?  Clearly changing each instance is not the right way to do it.  Lets instead define a function to do the work for us.
 
-# In[43]:
+# In[21]:
 
 
 def do_it(x):
-    print(x**2+2)
-do_it(5)
+    print(x**2 + 2)
 
 
 # Now we can just call the function on every element.  If we want to change the output, we just need to change the function in one place, not in all places we want to use the function!
 
-# In[41]:
+# In[ ]:
 
 
 do_it(1)
@@ -272,21 +239,13 @@ do_it(9)
 # 
 # 1. Modify the `do_it` function to print the square of the value it currently prints.
 
-# In[44]:
-
-
-def do_it(num):
-    print(num**2)
-do_it(83)
-
-
 # ## Syntax
 # 
 # As our instructions to the computer become more complicated, we will need to organize them in a way the computer understands. We've already seen an example of this with our `square` function. There was a specific order to the words and specific symbols we had to use to let Python know which part of the function was the definition and which part was the body, or which part was the name of the function and which part was the argument. We call the rules for organizing code the programming language's **syntax**.
 # 
 # Python's syntax is very streamlined so that code is readable and intuitive. Python accomplishes this by using whitespace to organize code. Let's look at some examples.
 
-# In[45]:
+# In[ ]:
 
 
 def example_a():
@@ -297,7 +256,7 @@ def example_a():
 example_a()
 
 
-# In[46]:
+# In[ ]:
 
 
 def example_b():
@@ -315,7 +274,7 @@ example_b()
 # 
 # The syntax for expressing this logic in Python is very similar. Let's define a function that accepts the player's score and the previous high score as arguments. If the player's score is higher, then it will print 'High score!'. Finally, it will return the new high score (whichever one that is).
 
-# In[47]:
+# In[ ]:
 
 
 def test_high_score(player_score, high_score):
@@ -326,13 +285,13 @@ def test_high_score(player_score, high_score):
     return high_score
 
 
-# In[51]:
+# In[ ]:
 
 
 print(test_high_score(83, 98))
 
 
-# In[52]:
+# In[ ]:
 
 
 print(test_high_score(95, 93))
@@ -346,7 +305,7 @@ print(test_high_score(95, 93))
 # 
 # We can nest `if` statements to make more complicated trees.
 
-# In[53]:
+# In[22]:
 
 
 def nested_example(x):
@@ -371,7 +330,7 @@ print(nested_example(37))
 # 
 # Conditions themselves are instructions that Python can interpret.
 
-# In[54]:
+# In[23]:
 
 
 print(50 > 10)
@@ -388,7 +347,7 @@ print(-3 > 2)
 # |False|True|False|True|
 # |False|False|False|False|
 
-# In[55]:
+# In[24]:
 
 
 print(True and True)
@@ -397,7 +356,7 @@ print(False and True)
 print(False and False)
 
 
-# In[56]:
+# In[25]:
 
 
 print(True or True)
@@ -406,7 +365,7 @@ print(False or True)
 print(False or False)
 
 
-# In[57]:
+# In[26]:
 
 
 x = 5
@@ -419,14 +378,14 @@ print(x > 7 or y > 2)
 
 # The keywords `or` and `and` are called **logical operations** (in the same sense that we call `+`, `-`, `*`, etc. arithmetic operations). The last logical operation is `not`: `not True` is `False`, `not False` is `True`.
 
-# In[58]:
+# In[27]:
 
 
 print(not True)
 print(not False)
 
 
-# In[59]:
+# In[28]:
 
 
 x = 10
@@ -443,23 +402,11 @@ print(not (x > 7 or y < 7))
 # 1. Write a function which takes in a number and returns True if it is greater than 10 but less than 20 or it is less than -100.
 # 2. In the code above we have used the `%` operator.  What does this do?
 
-# In[66]:
-
-
-def my_func(num):
-    if((num>10 and num<20) or (num < -100)):
-        return True
-    else:
-        return False
-my_func(10)
-    
-
-
 # ## Iteration
 # 
 # Conditionals are very useful because they allow our programs to make decisions based on some information. These decisions control the flow of the program (i.e. which statements get executed). We have one other major tool for controlling  program flow, which is repetition. In programming, we will use repetitive loops to execute the same code many times. This is called **iteration**. The most basic kind of iteration is the `while` loop. A `while` loop will keep executing so long as the condition after the `while` is `True`.
 
-# In[67]:
+# In[31]:
 
 
 x = 0
@@ -474,7 +421,7 @@ while x < 5:
 # 
 # The Fibonacci sequence goes on infinitely, so we can only ever compute part of it. Below we define two functions to compute part of the Fibonacci sequence; the first function computes the first `n` terms, while the second function computes all the terms less than an upper limit, `x`.
 
-# In[ ]:
+# In[32]:
 
 
 def first_n_fibonacci(n):
@@ -509,26 +456,7 @@ def below_x_fibonacci(x):
         curr_num = next_num
 
 
-# In[4]:
-
-
-def first_n_fibonacci(n):
-    prev_num = 0
-    curr_num = 1
-    count = 2
-
-    print(prev_num)
-    print(curr_num)
-
-    while count <= n:
-        next_num = curr_num + prev_num
-        print(next_num)
-        prev_num = curr_num
-        curr_num = next_num
-        count += 1
-
-
-# In[5]:
+# In[33]:
 
 
 m = 7
@@ -536,31 +464,12 @@ print('First %d Fibonacci numbers' % m)
 first_n_fibonacci(m)
 
 
-# In[9]:
-
-
-def below_x_fibonacci(x):
-    prev_num = 8
-    curr_num = 13
-
-    if curr_num < x:
-        print(prev_num)
-        print(curr_num)
-    elif prev_num < x:
-        print(prev_num)
-    
-    while curr_num + prev_num < x:
-        next_num = curr_num + prev_num
-        print(next_num)
-        prev_num = curr_num
-        curr_num = next_num
-
-
-# In[12]:
+# In[34]:
 
 
 print()
-y = 100
+
+y = 40
 print('Fibonacci numbers below %d' % y)
 below_x_fibonacci(y)        
 
@@ -578,7 +487,7 @@ below_x_fibonacci(y)
 # 
 # The recipe has an ordered `list` of instructions. In Python we can use a list of strings to represent the instructions.
 
-# In[13]:
+# In[35]:
 
 
 bread_recipe = ['Dissolve salt in water', 'Mix yeast into water', 'Mix water with flour to form dough', 
@@ -587,7 +496,7 @@ bread_recipe = ['Dissolve salt in water', 'Mix yeast into water', 'Mix water wit
 
 # We will discuss lists more in the [Data Structures lecture](PY_DataStructures.ipynb). We could store different recipes in different lists.
 
-# In[14]:
+# In[36]:
 
 
 soup_recipe = ['Dissolve salt in water', 'Boil  water', 'Add bones to boiling water', 'Chop onions', 
@@ -602,7 +511,7 @@ beans_recipe = ['Soak beans in water', 'Dissolve salt in water', 'Heat water and
 # 
 # A `for` loop does an action for each item in a `list` (or more precisely, in an **iterable**).
 
-# In[15]:
+# In[37]:
 
 
 def print_recipe(instructions):
@@ -610,19 +519,19 @@ def print_recipe(instructions):
         print(step)
 
 
-# In[16]:
+# In[38]:
 
 
 print_recipe(soup_recipe)
 
 
-# In[17]:
+# In[39]:
 
 
 print_recipe(bread_recipe)
 
 
-# In[18]:
+# In[40]:
 
 
 print_recipe(beans_recipe)
@@ -630,7 +539,7 @@ print_recipe(beans_recipe)
 
 # We can also use a `for` loop to repeat a task a certain number of times, like printing out the first `n` numbers in the Fibonacci sequence. Compare these two Fibonacci functions:
 
-# In[45]:
+# In[41]:
 
 
 def first_n_fibonacci_while(n):
@@ -662,13 +571,13 @@ def first_n_fibonacci_for(n):
         curr_num = next_num
 
 
-# In[46]:
+# In[42]:
 
 
 first_n_fibonacci_while(7)
 
 
-# In[47]:
+# In[43]:
 
 
 first_n_fibonacci_for(7)
@@ -682,7 +591,7 @@ first_n_fibonacci_for(7)
 # 
 # Another way to get something like iteration is called _recursion_ which is when we define a function in terms of itself.  Lets write the Fibonacci sequence recursively.  This will be slightly different in that it will only calculate the nth Fibonacci number.
 
-# In[41]:
+# In[44]:
 
 
 def fibonacci_recursive(n):
@@ -694,7 +603,7 @@ def fibonacci_recursive(n):
         return fibonacci_recursive(n-1)  + fibonacci_recursive(n-2)
 
 
-# In[42]:
+# In[45]:
 
 
 fibonacci_recursive(7)
@@ -708,7 +617,7 @@ fibonacci_recursive(7)
 # 
 # Below we write a function that prints out all the prime numbers up to some number `n`. We will use iteration to check if each number is prime. We will use a conditional to print out numbers only if they are prime. We will also break up the task into small pieces so our code is easy to read and understand. This means we will use (or _call_) helper functions inside of our solution.
 
-# In[43]:
+# In[46]:
 
 
 def is_prime(number):
@@ -727,7 +636,7 @@ def print_primes(n):
             print('%d is prime' % number)
 
 
-# In[44]:
+# In[47]:
 
 
 print_primes(42)
@@ -843,7 +752,7 @@ print_todo_default(True, True)
 # 
 # Another thing we might want to do is take a variable list of arguments, lets write a similar `todo` function as before, but this time we will allow it to pass in any number of arguments.  Here we will make use of the `*args` syntax.  This `*` tells python to gather the rest of the arguments into the tuple `args`.
 
-# In[60]:
+# In[56]:
 
 
 def print_todo_args(*args):
@@ -859,4 +768,4 @@ print_todo_args('watch_tv', 'read', 'eat', 'sleep')
 # - [String formatting](https://pyformat.info/)
 # - Exceptions (e.g. `TypeError`)
 
-# *Copyright &copy; 2019 The Data Incubator.  All rights reserved.*
+# *Copyright &copy; 2020 The Data Incubator.  All rights reserved.*
