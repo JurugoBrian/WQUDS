@@ -1,11 +1,11 @@
 
 # coding: utf-8
 
-# In[1]:
+# In[2]:
 
 
 get_ipython().run_line_magic('logstop', '')
-get_ipython().run_line_magic('logstart', '-ortq ~/.logs/PY_Intro.py append')
+get_ipython().run_line_magic('logstart', '-rtq ~/.logs/PY_Intro.py append')
 get_ipython().run_line_magic('matplotlib', 'inline')
 import matplotlib
 import seaborn as sns
@@ -38,7 +38,7 @@ matplotlib.rcParams['figure.dpi'] = 144
 # 
 # The notebook is divided into cells, some of which are markdown.
 
-# In[2]:
+# In[ ]:
 
 
 print('some of which are code')
@@ -48,7 +48,7 @@ print('some of which are code')
 # 
 # If I define a variable in one cell
 
-# In[3]:
+# In[ ]:
 
 
 a = 5
@@ -56,43 +56,13 @@ a = 5
 
 # The value is still accessible in another cell:
 
-# In[5]:
+# In[ ]:
 
 
 print(a)
-
-
-# In[6]:
-
-
-print("I'm jurugo Brian")
 
 
 # Jupyter notebooks do have some autosave functionality, but please remember to save your notebooks manually often to make sure you don't use any work.  If you are familiar with a version control too like `git`, it is not a bad idea to version control the notebooks, although we do ask you don't push the material to a public repository.
-
-# In[7]:
-
-
-print('Its time to sleep')
-
-
-# In[2]:
-
-
-a = 'Am learning to use Jupiter Notebook for python'
-
-
-# In[3]:
-
-
-print(a)
-
-
-# In[4]:
-
-
-print('Jurugo Brian is an aspiring data scientist')
-
 
 # ## Exercises
 # 
@@ -103,4 +73,4 @@ print('Jurugo Brian is an aspiring data scientist')
 # 1. Make a few cells in the Jupyter notebook and execute them
 # 2. Save your Jupyter notebook
 
-# *Copyright &copy; 2019 The Data Incubator.  All rights reserved.*
+# *Copyright &copy; 2020 The Data Incubator.  All rights reserved.*
