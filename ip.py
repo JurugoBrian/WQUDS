@@ -1,20 +1,19 @@
 
 # coding: utf-8
 
-# In[31]:
+# In[63]:
 
 
 get_ipython().run_line_magic('logstop', '')
-get_ipython().run_line_magic('logstart', '-ortq ~/.logs/ip.py append')
+get_ipython().run_line_magic('logstart', '-rtq ~/.logs/ip.py append')
 get_ipython().run_line_magic('matplotlib', 'inline')
 import matplotlib
 import seaborn as sns
-import numpy
 sns.set()
 matplotlib.rcParams['figure.dpi'] = 144
 
 
-# In[4]:
+# In[ ]:
 
 
 from static_grader import grader
@@ -30,74 +29,67 @@ from static_grader import grader
 # 
 # Write a function that accepts an exponent $p$ and returns the corresponding Mersenne number.
 
-# In[5]:
+# In[3]:
 
 
 def mersenne_number(p):
-    return 2**p-1
-mersenne_number(2)
+    msn = 2**p - 1
+    return msn
+
+print(mersenne_number(2))
+print(mersenne_number(5))
 
 
 # Mersenne numbers can only be prime if their exponent, $p$, is prime. Make a list of the Mersenne numbers for all primes $p$ between 3 and 65 (there should be 17 of them).
 # 
 # Hint: It may be useful to modify the `is_prime` and `get_primes` functions from [the Program Flow notebook](PY_ProgramFlow.ipynb) for use in this problem.
 
-# In[6]:
+# In[20]:
 
 
 # we can make a list like this
 my_list = []
-print(my_list)
+def is_prime(number):
+    if number <= 1:
+        return False
+    
+    for factor in range(2, number):
+        if number % factor == 0:
+            return False
+
+    return number 
+
+def get_primes(a, b):
+    for num in range(a, b):
+        if is_prime(num):
+            my_list.append(num)
+    return my_list
+get_primes(3,65)
 
 
-# In[7]:
+# In[28]:
 
 
 # we can also make an empty list and add items to it
-another_list = []
-print(another_list)
+mersenne_list = []
+print(mersenne_list)
 
-
-# In[8]:
-
-
-my_list.clear()
-def is_prime(number):
-    if number <= 2:
-        return False
-    for factor in range(2, number):
-        if (number % factor) == 0:
-            return False
-    return True
-
-def get_primes(n_start, n_end):
-    for number in range(n_start, n_end+1):
-        if is_prime(number):
-            my_list.append(number)
-    return my_list
-my_list = get_primes(3, 65)
-print(my_list)
-
-
-# In[9]:
-
-
-def mersenne_numbers(num_list):
-    for item in num_list:
-        msn = 2**item-1
-        another_list.append(msn)
-    return another_list
+def get_mersenne_primes():
+    for item in my_list:
+        msn = 2**item - 1
+        mersenne_list.append(msn)
+    return mersenne_list
 
 
 # The next cell shows a dummy solution, a list of 17 sevens. Alter the next cell to make use of the functions you've defined above to create the appropriate list of Mersenne numbers.
 
-# In[95]:
+# In[29]:
 
 
-mersennes = mersenne_numbers(my_list)
+mersennes = get_mersenne_primes()
 
 
-# In[139]:
+# In[30]:
 
 
 grader.score.ip__mersenne_numbers(mersennes)
@@ -112,24 +104,22 @@ grader.score.ip__mersenne_numbers(mersennes)
 # 
 # Write a function that accepts the exponent $p$ of a Mersenne number and returns the Lucas-Lehmer sequence up to $i = p - 2$ (inclusive). Remember that the [modulo operation](https://en.wikipedia.org/wiki/Modulo_operation) is implemented in Python as `%`.
 
-# In[10]:
+# In[61]:
 
 
+lucas_lehmer_list = []
 def lucas_lehmer(p):
-    n0 = 4
-    m = 2**p-1
-    lucas_list = [n0]
-    for i in range (p-2):
-        n1 = (n0**2-2)%m
-        lucas_list.append(n1)
-        n0 = n1
-    return lucas_list
-lucas_lehmer(17)
+    n = 4
+    m = 2**p - 1
+    for i in range(p-1):
+        n = ((n**2) - 2) % m
+        lucas_lehmer_list.append(n)
+    return lucas_lehmer_list
 
 
 # Use your function to calculate the Lucas-Lehmer series for $p = 17$ and pass the result to the grader.
 
-# In[240]:
+# In[62]:
 
 
 ll_result = lucas_lehmer(17)
@@ -143,32 +133,17 @@ grader.score.ip__lucas_lehmer(ll_result)
 # 
 # _HINT: The `zip` function is useful for combining two lists into a list of tuples_
 
-# In[11]:
+# In[ ]:
 
 
 def ll_prime(p):
-    lucas_list = lucas_lehmer(p)
-    for num in lucas_list:
-        if num == 0:
-            tested_num = 1
-        else:
-            tested_num = 0
-    return tested_num
-
-def send_num(the_list):
-    tested_list = []
-    for num in the_list:
-        tested_num = ll_prime(num)
-        tested_list.append(tested_num)
-    return list(zip(the_list, tested_list))
-        
-send_num(my_list)
+    
 
 
-# In[22]:
+# In[ ]:
 
 
-mersenne_primes = send_num(my_list)
+mersenne_primes = [(3, 1)] * 17
 
 grader.score.ip__mersenne_primes(mersenne_primes)
 
@@ -185,21 +160,12 @@ grader.score.ip__mersenne_primes(mersenne_primes)
 # 
 # You will see the functions followed by a cell with an `assert` statement.  These cells should run and produce no output, if they produce an error, then your function needs to be modified.  Do not modify the assert statements, they are exactly as they should be!
 
-# In[32]:
+# In[ ]:
 
 
 import math
-import numpy as np
-def is_prime_fast(num):
-    if(num<=2 or ((num%2==0)and(num>2))):
-        return False
-    frnum = float(num**0.5)
-    fnum = float(num)
-    for i in np.arange(3.0, frnum):
-        if(fnum%i)==0.0:
-            return False
-    return True
-is_prime_fast(9)
+def is_prime_fast(number):
+    return ...
 
 
 # Run the following cell to make sure it finds the same primes as the original function.
@@ -213,13 +179,13 @@ for n in range(10000):
 
 # Now lets check the timing, here we will use the `%%timeit` magic which will time the execution of a particular cell.
 
-# In[76]:
+# In[ ]:
 
 
 get_ipython().run_cell_magic('timeit', '', 'is_prime(67867967)')
 
 
-# In[77]:
+# In[ ]:
 
 
 get_ipython().run_cell_magic('timeit', '', 'is_prime_fast(67867967)')
@@ -227,20 +193,14 @@ get_ipython().run_cell_magic('timeit', '', 'is_prime_fast(67867967)')
 
 # Now return a function which will find all prime numbers up to and including $n$. Submit this function to the grader.
 
-# In[78]:
+# In[ ]:
 
 
-def cal_fast_primes(number):
-    my_fast_list = []
-    for num in range(number+1):
-        if is_prime_fast(num):
-            my_fast_list.append(num)
-    return my_fast_list
-def get_primes_fast(self):
-    return cal_fast_primes(25)
+def get_primes_fast(n):
+    return ...
 
 
-# In[79]:
+# In[ ]:
 
 
 grader.score.ip__is_prime_fast(get_primes_fast)
@@ -269,7 +229,7 @@ grader.score.ip__is_prime_fast(get_primes_fast)
 # 
 # Remember that python lists are zero indexed. We have provided assertions below to help you assess whether your functions are functioning properly.
 
-# In[66]:
+# In[ ]:
 
 
 def list_true(n):
@@ -366,4 +326,4 @@ get_ipython().run_cell_magic('timeit', '', 'get_primes(0, 1000)')
 grader.score.ip__eratosthenes(sieve)
 
 
-# *Copyright &copy; 2019 The Data Incubator.  All rights reserved.*
+# *Copyright &copy; 2020 The Data Incubator.  All rights reserved.*
